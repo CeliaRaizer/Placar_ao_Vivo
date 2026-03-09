@@ -1,0 +1,38 @@
+<h2>Criar Jogo</h2>
+
+<input id="timeA" placeholder="Nome do Time A">
+<input id="timeB" placeholder="Nome do Time B">
+
+<button onclick="criarJogo()">Criar Jogo</button>
+
+<h2>Registrar Gol</h2>
+
+<button onclick="golA()">Gol Time A</button>
+<button onclick="golB()">Gol Time B</button>
+
+<script>
+
+function criarJogo(){
+
+    const timeA = document.getElementById("timeA").value
+    const timeB = document.getElementById("timeB").value
+
+    fetch("/definir-times",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({timeA,timeB})
+    })
+
+}
+
+function golA(){
+    fetch("/golA",{method:"POST"})
+}
+
+function golB(){
+    fetch("/golB",{method:"POST"})
+}
+
+</script>
