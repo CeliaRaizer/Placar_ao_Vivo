@@ -1,0 +1,157 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f4f6f8;
+    padding:30px;
+}
+
+/* TÍTULO */
+
+h1{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+/* STATUS */
+
+#status{
+    text-align:center;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+/* BOTÕES CONECTAR */
+
+button{
+    cursor:pointer;
+    border:none;
+    border-radius:6px;
+    padding:8px 12px;
+    font-size:14px;
+    transition:0.2s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+/* LISTA */
+
+ul{
+    list-style:none;
+    padding:0;
+    max-width:700px;
+    margin:auto;
+}
+
+/* CARD DO JOGO */
+
+.card-jogo{
+    background:white;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:10px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+    transition:0.2s;
+}
+
+.card-jogo:hover{
+    transform:translateY(-2px);
+    box-shadow:0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* INFO DO JOGO */
+
+.jogo-info{
+    display:flex;
+    flex-direction:column;
+}
+
+.placar{
+    font-size:18px;
+    font-weight:bold;
+}
+
+.data{
+    font-size:13px;
+    color:#777;
+}
+
+/* BOTÕES DO CARD */
+
+.botoes{
+    display:flex;
+    gap:10px;
+}
+
+/* DETALHES */
+
+.btn-detalhes{
+    background:#3498db;
+    color:white;
+}
+
+.btn-detalhes:hover{
+    background:#2980b9;
+}
+
+/* EXCLUIR */
+
+.btn-excluir{
+    background:#e74c3c;
+    color:white;
+}
+
+.btn-excluir:hover{
+    background:#c0392b;
+}
+
+/* AREA DOS DETALHES */
+
+.detalhes-jogo{
+    max-width:700px;
+    margin:auto;
+}
+
+.detalhes-card{
+    background:#ffffff;
+    border-left:4px solid #3498db;
+    padding:12px 15px;
+    margin-bottom:15px;
+    border-radius:6px;
+
+    box-shadow:0 1px 4px rgba(0,0,0,0.05);
+}
+
+.detalhes-card h3{
+    margin-top:0;
+}
+
+.detalhes-card ul{
+    padding-left:20px;
+}
+
+.detalhes-card li{
+    margin-bottom:4px;
+}
+
+/* RESPONSIVO */
+
+@media (max-width:600px){
+
+    .card-jogo{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    .botoes{
+        width:100%;
+        justify-content:flex-end;
+    }
+
+}

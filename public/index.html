@@ -1,85 +1,70 @@
-<h1 id="placar"></h1>
+<link rel="stylesheet" href="assets/css/style.css">
 
-<h2 id="tempo"></h2>
 
-<h3>Minuto a minuto</h3>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Brasileirão - Sistema de Jogos</title>
+<link rel="stylesheet" href="/css/home.css">
+</head>
 
-<ul id="eventos"></ul>
+<body>
 
-<p id="status">🔴 Desconectado</p>
+<header>
 
-<button id="btnConectar">🔌 Conectar</button>
-<button id="btnDesconectar">❌ Desconectar</button>
+<h1>⚽ Brasileirão</h1>
 
-<script>
+<nav>
+<a href="#">Home</a>
+<a href="#">Sobre</a>
+<a href="#">Funcionalidades</a>
+</nav>
 
-let ws = null
+</header>
 
-const placar = document.getElementById("placar")
-const tempo = document.getElementById("tempo")
-const lista = document.getElementById("eventos")
-const status = document.getElementById("status")
 
-document.getElementById("btnConectar").addEventListener("click", conectar)
-document.getElementById("btnDesconectar").addEventListener("click", desconectar)
+<section class="cards">
 
-function conectar(){
+<a href="/admin.html" class="card">
 
-    if(ws && ws.readyState === WebSocket.OPEN){
-        status.innerText = "🟢 Já conectado"
-        return
-    }
+<div class="icon">🧑‍💼</div>
 
-    status.innerText = "🟡 Conectando..."
+<h2>Coordenação</h2>
 
-    ws = new WebSocket("ws://localhost:3000")
+<p>
+Registrar jogos, gols, cartões e controlar a partida.
+</p>
 
-    ws.onopen = () => {
-        status.innerText = "🟢 Conectado ao servidor"
-    }
+</a>
 
-    ws.onerror = () => {
-        status.innerText = "❌ Erro na conexão"
-    }
 
-    ws.onclose = () => {
-        status.innerText = "🔴 Conexão encerrada"
-    }
+<a href="/jogo.html" class="card">
 
-    ws.onmessage = (event) => {
+<div class="icon">📡</div>
 
-        const jogo = JSON.parse(event.data)
+<h2>Acompanhar Jogo</h2>
 
-        if(!jogo.timeA){
-            placar.innerText = "Nenhum jogo em andamento"
-            tempo.innerText = ""
-            lista.innerHTML = ""
-            return
-        }
+<p>
+Ver o placar e eventos do jogo em tempo real.
+</p>
 
-        placar.innerText =
-            `${jogo.timeA} ${jogo.golsA} x ${jogo.golsB} ${jogo.timeB}`
+</a>
 
-        tempo.innerText = `⏱ ${jogo.minuto}'`
 
-        lista.innerHTML = ""
+<a href="/historico.html" class="card">
 
-        jogo.eventos.slice().reverse().forEach(function(e){
+<div class="icon">📜</div>
 
-            const li = document.createElement("li")
-            li.innerText = e
-            lista.appendChild(li)
+<h2>Jogos Anteriores</h2>
 
-        })
+<p>
+Consultar histórico de partidas finalizadas.
+</p>
 
-    }
+</a>
 
-}
+</section>
 
-function desconectar(){
-    if(ws){
-        ws.close()
-    }
-}
-
-</script>
+</body>
+</html>

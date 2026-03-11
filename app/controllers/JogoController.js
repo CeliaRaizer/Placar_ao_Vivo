@@ -68,11 +68,14 @@ removerJogo(req,res){
     // remove jogo atual
     this.jogo.removerJogo()
 
-    // envia atualização completa
-   this.notificador.notificar({
-    tipo: "historico-atualizado",
-    historico: this.historico.listarJogos()
-})
+    // atualiza placar para quem acompanha ao vivo
+    this.notificador.notificar(this.jogo.obterDados())
+
+    // envia histórico atualizado
+    this.notificador.notificar({
+        tipo: "historico-atualizado",
+        historico: this.historico.listarJogos()
+    })
 
     res.json({ok:true})
 }

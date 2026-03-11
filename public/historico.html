@@ -1,19 +1,52 @@
+<link rel="stylesheet" href="assets/css/historico.css">
+
 <h1>Jogos Anteriores</h1>
+
+<p id="status">🔴 Desconectado</p>
+
+<button onclick="conectar()">🔌 Conectar</button>
+<button onclick="desconectar()">❌ Desconectar</button>
 
 <ul id="lista"></ul>
 
 <script>
 
-const ws = new WebSocket("ws://localhost:3000")
+let ws = null
 
-ws.onmessage = (event) => {
+function conectar(){
 
-    const dados = JSON.parse(event.data)
-
-    if(dados.tipo === "historico-atualizado"){
-        mostrarHistorico(dados.historico)
+    if(ws && ws.readyState === WebSocket.OPEN){
+        return
     }
 
+    ws = new WebSocket("ws://localhost:3000")
+
+    document.getElementById("status").innerText = "🟡 Conectando..."
+
+    ws.onopen = () => {
+        document.getElementById("status").innerText = "🟢 Conectado"
+    }
+
+    ws.onclose = () => {
+        document.getElementById("status").innerText = "🔴 Desconectado"
+    }
+
+    ws.onmessage = (event) => {
+
+        const dados = JSON.parse(event.data)
+
+        if(dados.tipo === "historico-atualizado"){
+            mostrarHistorico(dados.historico)
+        }
+
+    }
+
+}
+
+function desconectar(){
+    if(ws){
+        ws.close()
+    }
 }
 
 function mostrarHistorico(jogos){
@@ -31,15 +64,87 @@ function mostrarHistorico(jogos){
         const li = document.createElement("li")
 
         li.innerHTML = `
-            <strong>
-                ${jogo.timeA} ${jogo.golsA} x ${jogo.golsB} ${jogo.timeB}
-            </strong>
-        `
+            <div class="card-jogo">
+
+                <div class="jogo-info">
+                    <span class="placar">
+                        ${jogo.timeA} ${jogo.golsA} x ${jogo.golsB} ${jogo.timeB}
+                    </span>
+
+                    <span class="data">
+                        📅 ${jogo.data}
+                    </span>
+                </div>
+
+                <div class="botoes">
+                    <button class="btn-detalhes" onclick="verDetalhes(${index})">
+                        👁 Detalhes
+                    </button>
+
+                    <button class="btn-excluir" onclick="excluirJogo(${index})">
+                        🗑 Excluir
+                    </button>
+                </div>
+
+            </div>
+
+            <div id="detalhes-${index}" class="detalhes-jogo"></div>
+            `
 
         lista.appendChild(li)
 
     })
+}
 
+function verDetalhes(index){
+
+    const area = document.getElementById(`detalhes-${index}`)
+
+    if(area.innerHTML !== ""){
+        area.innerHTML = ""
+        return
+    }
+
+    fetch("/historico")
+    .then(res => res.json())
+    .then(jogos => {
+
+        const jogo = jogos[index]
+
+        let eventos = ""
+
+        if(jogo.eventos.length === 0){
+            eventos = "<p>Nenhum evento registrado</p>"
+        }else{
+            eventos = "<ul>" + jogo.eventos.map(e => `<li>${e}</li>`).join("") + "</ul>"
+        }
+
+        area.innerHTML = `
+        <div class="detalhes-card">
+
+            <h3>Eventos do jogo</h3>
+
+            ${eventos}
+
+        </div>
+        `
+    })
+
+}
+
+function excluirJogo(index){
+
+    if(!confirm("Deseja excluir este jogo?")){
+        return
+    }
+
+    fetch("/historico/remover",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({ index })
+    })
 }
 
 </script>

@@ -12,19 +12,6 @@
     ]
   },
   {
-    "id": 1773186129275,
-    "timeA": "Cruzeiro",
-    "timeB": "RedBull",
-    "golsA": 0,
-    "golsB": 1,
-    "minuto": "89",
-    "data": "10/03/2026, 20:42:09",
-    "eventos": [
-      "77' ⚽ Gol de Arthur (RedBull)",
-      "89' 🟨 Cartão amarelo para Fagner"
-    ]
-  },
-  {
     "id": 1773186220934,
     "timeA": "São Paulo",
     "timeB": "Bragantino",
@@ -50,18 +37,6 @@
     ]
   },
   {
-    "id": 1773189647682,
-    "timeA": "Grêmio",
-    "timeB": "Cruzeiro",
-    "golsA": 0,
-    "golsB": 0,
-    "minuto": "80",
-    "data": "10/03/2026, 21:40:47",
-    "eventos": [
-      "80' 🟥 Cartão vermelho para Cassio"
-    ]
-  },
-  {
     "id": 1773189875462,
     "timeA": "Corinthians",
     "timeB": "Flamengo",
@@ -84,59 +59,29 @@
     "eventos": []
   },
   {
-    "id": 1773249072064,
-    "timeA": "santos",
-    "timeB": "avai",
-    "golsA": 0,
-    "golsB": 0,
-    "minuto": 0,
-    "data": "11/03/2026, 14:11:12",
-    "eventos": []
-  },
-  {
-    "id": 1773249550320,
-    "timeA": "corinthians",
-    "timeB": "sabntos",
+    "id": 1773260422013,
+    "timeA": "Grêmio",
+    "timeB": "Inter",
     "golsA": 1,
     "golsB": 0,
-    "minuto": "4",
-    "data": "11/03/2026, 14:19:10",
+    "minuto": "70",
+    "data": "11/03/2026, 17:20:22",
     "eventos": [
-      "4' ⚽ Gol de yuti (corinthians)"
+      "51' ⚽ Gol de Gustavo Martins (Grêmio)",
+      "70' 🟨 Cartão amarelo para Patrick"
     ]
   },
   {
-    "id": 1773249587696,
-    "timeA": "palmeiras",
-    "timeB": "gremio",
-    "golsA": 0,
-    "golsB": 1,
-    "minuto": "",
-    "data": "11/03/2026, 14:19:47",
-    "eventos": [
-      "' ⚽ Gol de  (gremio)"
-    ]
-  },
-  {
-    "id": 1773250151966,
-    "timeA": "corinthians",
-    "timeB": "vasco",
+    "id": 1773260766281,
+    "timeA": "Vasco",
+    "timeB": "Fluminense",
     "golsA": 1,
     "golsB": 0,
-    "minuto": "44",
-    "data": "11/03/2026, 14:29:11",
+    "minuto": "78",
+    "data": "11/03/2026, 17:26:06",
     "eventos": [
-      "44' ⚽ Gol de yuri (corinthians)"
+      "35' ⚽ Gol de Coutinho (Vasco)",
+      "78' 🟥 Cartão vermelho para Martinelli"
     ]
-  },
-  {
-    "id": 1773250190546,
-    "timeA": "inter",
-    "timeB": "corinthians",
-    "golsA": 0,
-    "golsB": 0,
-    "minuto": 0,
-    "data": "11/03/2026, 14:29:50",
-    "eventos": []
   }
 ]

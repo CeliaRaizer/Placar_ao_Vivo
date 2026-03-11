@@ -1,0 +1,87 @@
+<link rel="stylesheet" href="assets/css/jogo.css">
+
+<h1 id="placar"></h1>
+
+<h2 id="tempo"></h2>
+
+<h3>Minuto a minuto</h3>
+
+<ul id="eventos"></ul>
+
+<p id="status">🔴 Desconectado</p>
+
+<button id="btnConectar">🔌 Conectar</button>
+<button id="btnDesconectar">❌ Desconectar</button>
+
+<script>
+
+let ws = null
+
+const placar = document.getElementById("placar")
+const tempo = document.getElementById("tempo")
+const lista = document.getElementById("eventos")
+const status = document.getElementById("status")
+
+document.getElementById("btnConectar").addEventListener("click", conectar)
+document.getElementById("btnDesconectar").addEventListener("click", desconectar)
+
+function conectar(){
+
+    if(ws && ws.readyState === WebSocket.OPEN){
+        status.innerText = "🟢 Já conectado"
+        return
+    }
+
+    status.innerText = "🟡 Conectando..."
+
+    ws = new WebSocket("ws://localhost:3000")
+
+    ws.onopen = () => {
+        status.innerText = "🟢 Conectado ao servidor"
+    }
+
+    ws.onerror = () => {
+        status.innerText = "❌ Erro na conexão"
+    }
+
+    ws.onclose = () => {
+        status.innerText = "🔴 Conexão encerrada"
+    }
+
+    ws.onmessage = (event) => {
+
+        const jogo = JSON.parse(event.data)
+
+        if(!jogo.timeA){
+            placar.innerText = "Nenhum jogo em andamento"
+            tempo.innerText = ""
+            lista.innerHTML = ""
+            return
+        }
+
+        placar.innerText =
+            `${jogo.timeA} ${jogo.golsA} x ${jogo.golsB} ${jogo.timeB}`
+
+        tempo.innerText = `⏱ ${jogo.minuto}'`
+
+        lista.innerHTML = ""
+
+        jogo.eventos.slice().reverse().forEach(function(e){
+
+            const li = document.createElement("li")
+            li.innerText = e
+            lista.appendChild(li)
+
+        })
+
+    }
+
+}
+
+function desconectar(){
+    if(ws){
+        ws.close()
+    }
+}
+
+</script>
