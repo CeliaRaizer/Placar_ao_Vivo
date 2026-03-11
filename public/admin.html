@@ -5,12 +5,32 @@
 
 <button onclick="criarJogo()">Criar Jogo</button>
 
-<h2>Registrar Gol</h2>
+    <h2>Registrar Jogo</h2>
 
-<button onclick="golA()">Gol Time A</button>
-<button onclick="golB()">Gol Time B</button>
+    <input id="jogador" placeholder="Nome do jogador">
+    <input id="minuto" placeholder="Minuto do jogo">
+
+    <button onclick="golA()">⚽ Gol Time A</button>
+    <button onclick="golB()">⚽ Gol Time B</button>
+
+    <h2>Registrar Cartão</h2>
+
+    <input id="jogadorCartao" placeholder="Nome do jogador">
+    <input id="minutoCartao" placeholder="Minuto do jogo">
+
+    <select id="tipoCartao">
+        <option value="amarelo">🟨 Cartão Amarelo</option>
+        <option value="vermelho">🟥 Cartão Vermelho</option>
+    </select>
+
+    <button onclick="registrarCartao()">Registrar Cartão</button>
+
+    <h2>Remover Jogo</h2>
+<button onclick="removerJogo()">Remover Jogo</button>
 
 <script>
+
+
 
 function criarJogo(){
 
@@ -28,11 +48,70 @@ function criarJogo(){
 }
 
 function golA(){
-    fetch("/golA",{method:"POST"})
+
+    const jogador = document.getElementById("jogador").value
+    const minuto = document.getElementById("minuto").value
+
+    fetch("/golA",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({jogador,minuto})
+    })
+
+    document.getElementById("jogador").value = ""
+    document.getElementById("minuto").value = ""
+
 }
 
 function golB(){
-    fetch("/golB",{method:"POST"})
+
+    const jogador = document.getElementById("jogador").value
+    const minuto = document.getElementById("minuto").value
+
+    fetch("/golB",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({jogador,minuto})
+    })
+
+    document.getElementById("jogador").value = ""
+    document.getElementById("minuto").value = ""
+
+}
+
+function registrarCartao(){
+
+    const jogador = document.getElementById("jogadorCartao").value
+    const minuto = document.getElementById("minutoCartao").value
+    const tipo = document.getElementById("tipoCartao").value
+
+    
+    fetch("/cartao",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({jogador,minuto,tipo})
+    })
+
+    document.getElementById("jogadorCartao").value = ""
+    document.getElementById("minutoCartao").value = ""
+
+}
+
+function removerJogo(){
+
+    fetch("/remover-jogo",{
+        method:"POST"
+    })
+
+    .then(() => {
+        alert("Jogo finalizado!");
+    })
 }
 
 </script>

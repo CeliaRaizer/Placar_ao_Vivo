@@ -5,6 +5,7 @@ const WebSocket = require("ws");
 // imports
 const Jogo = require("./app/models/Jogo");
 const Notificador = require("./app/utils/Notificador");
+const Historico = require("./app/utils/Historico");
 const JogoController = require("./app/controllers/JogoController");
 const configurarRotas = require("./app/routes/routes");
 
@@ -20,16 +21,21 @@ app.use(express.static("public"));
 // iniciar sistema
 const jogo = new Jogo();
 const notificador = new Notificador(wss);
-const jogoController = new JogoController(jogo, notificador);
+const historico = new Historico();
+
+const jogoController = new JogoController(jogo, notificador, historico);
 
 // websocket
 wss.on("connection", ws => {
 
-    console.log("Cliente conectado");
+    console.log("Cliente conectado")
 
-    ws.send(JSON.stringify(jogo.obterDados()));
+    ws.send(JSON.stringify({
+        tipo: "historico-atualizado",
+        historico: historico.listarJogos()
+    }))
 
-});
+})
 
 // rotas
 const rotas = configurarRotas(app, jogoController);

@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1773186038476,
+    "timeA": "Botafogo",
+    "timeB": "Avai",
+    "golsA": 0,
+    "golsB": 1,
+    "minuto": "22",
+    "data": "10/03/2026, 20:40:38",
+    "eventos": [
+      "22' ⚽ Gol de Gustavo (Avai)"
+    ]
+  },
+  {
+    "id": 1773186129275,
+    "timeA": "Cruzeiro",
+    "timeB": "RedBull",
+    "golsA": 0,
+    "golsB": 1,
+    "minuto": "89",
+    "data": "10/03/2026, 20:42:09",
+    "eventos": [
+      "77' ⚽ Gol de Arthur (RedBull)",
+      "89' 🟨 Cartão amarelo para Fagner"
+    ]
+  },
+  {
+    "id": 1773186220934,
+    "timeA": "São Paulo",
+    "timeB": "Bragantino",
+    "golsA": 0,
+    "golsB": 1,
+    "minuto": "82",
+    "data": "10/03/2026, 20:43:40",
+    "eventos": [
+      "64' ⚽ Gol de Lucas (Bragantino)",
+      "82' 🟥 Cartão vermelho para arboleda"
+    ]
+  },
+  {
+    "id": 1773187273594,
+    "timeA": "Gremio",
+    "timeB": "Inter",
+    "golsA": 1,
+    "golsB": 0,
+    "minuto": "41",
+    "data": "10/03/2026, 21:01:13",
+    "eventos": [
+      "41' ⚽ Gol de lucas (Gremio)"
+    ]
+  },
+  {
+    "id": 1773189647682,
+    "timeA": "Grêmio",
+    "timeB": "Cruzeiro",
+    "golsA": 0,
+    "golsB": 0,
+    "minuto": "80",
+    "data": "10/03/2026, 21:40:47",
+    "eventos": [
+      "80' 🟥 Cartão vermelho para Cassio"
+    ]
+  },
+  {
+    "id": 1773189875462,
+    "timeA": "Corinthians",
+    "timeB": "Flamengo",
+    "golsA": 1,
+    "golsB": 0,
+    "minuto": "44",
+    "data": "10/03/2026, 21:44:35",
+    "eventos": [
+      "44' ⚽ Gol de Matheuzinho (Corinthians)"
+    ]
+  },
+  {
+    "id": 1773249047446,
+    "timeA": "vasco",
+    "timeB": "avai",
+    "golsA": 0,
+    "golsB": 0,
+    "minuto": 0,
+    "data": "11/03/2026, 14:10:47",
+    "eventos": []
+  },
+  {
+    "id": 1773249072064,
+    "timeA": "santos",
+    "timeB": "avai",
+    "golsA": 0,
+    "golsB": 0,
+    "minuto": 0,
+    "data": "11/03/2026, 14:11:12",
+    "eventos": []
+  },
+  {
+    "id": 1773249550320,
+    "timeA": "corinthians",
+    "timeB": "sabntos",
+    "golsA": 1,
+    "golsB": 0,
+    "minuto": "4",
+    "data": "11/03/2026, 14:19:10",
+    "eventos": [
+      "4' ⚽ Gol de yuti (corinthians)"
+    ]
+  },
+  {
+    "id": 1773249587696,
+    "timeA": "palmeiras",
+    "timeB": "gremio",
+    "golsA": 0,
+    "golsB": 1,
+    "minuto": "",
+    "data": "11/03/2026, 14:19:47",
+    "eventos": [
+      "' ⚽ Gol de  (gremio)"
+    ]
+  },
+  {
+    "id": 1773250151966,
+    "timeA": "corinthians",
+    "timeB": "vasco",
+    "golsA": 1,
+    "golsB": 0,
+    "minuto": "44",
+    "data": "11/03/2026, 14:29:11",
+    "eventos": [
+      "44' ⚽ Gol de yuri (corinthians)"
+    ]
+  },
+  {
+    "id": 1773250190546,
+    "timeA": "inter",
+    "timeB": "corinthians",
+    "golsA": 0,
+    "golsB": 0,
+    "minuto": 0,
+    "data": "11/03/2026, 14:29:50",
+    "eventos": []
+  }
+]

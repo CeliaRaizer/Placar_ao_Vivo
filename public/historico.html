@@ -1,0 +1,45 @@
+<h1>Jogos Anteriores</h1>
+
+<ul id="lista"></ul>
+
+<script>
+
+const ws = new WebSocket("ws://localhost:3000")
+
+ws.onmessage = (event) => {
+
+    const dados = JSON.parse(event.data)
+
+    if(dados.tipo === "historico-atualizado"){
+        mostrarHistorico(dados.historico)
+    }
+
+}
+
+function mostrarHistorico(jogos){
+
+    const lista = document.getElementById("lista")
+    lista.innerHTML = ""
+
+    if(jogos.length === 0){
+        lista.innerHTML = "<li>Nenhum jogo no histórico</li>"
+        return
+    }
+
+    jogos.forEach((jogo,index)=>{
+
+        const li = document.createElement("li")
+
+        li.innerHTML = `
+            <strong>
+                ${jogo.timeA} ${jogo.golsA} x ${jogo.golsB} ${jogo.timeB}
+            </strong>
+        `
+
+        lista.appendChild(li)
+
+    })
+
+}
+
+</script>

@@ -1,3 +1,5 @@
+const WebSocket = require("ws");
+
 class Notificador {
 
     constructor(wss) {
@@ -8,7 +10,7 @@ class Notificador {
 
         this.wss.clients.forEach(cliente => {
 
-            if (cliente.readyState === 1) {
+            if (cliente.readyState === WebSocket.OPEN) {
                 cliente.send(JSON.stringify(dados));
             }
 
