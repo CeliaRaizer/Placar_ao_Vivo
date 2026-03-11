@@ -64,5 +64,30 @@
       "91' 🟨 Cartão amarelo para Gabriel",
       "65' 🟨 Cartão amarelo para W.Machado"
     ]
+  },
+  {
+    "id": 1773271785386,
+    "timeA": "Atlético-MG",
+    "timeB": "Internacional",
+    "golsA": 1,
+    "golsB": 0,
+    "minuto": "2",
+    "data": "11/03/2026, 20:29:45",
+    "eventos": [
+      "2' ⚽ Gol de Tomás Cuello (Atlético-MG)"
+    ]
+  },
+  {
+    "id": 1773271862779,
+    "timeA": "Remo",
+    "timeB": "Fluminense",
+    "golsA": 0,
+    "golsB": 1,
+    "minuto": "",
+    "data": "11/03/2026, 20:31:02",
+    "eventos": [
+      "37' ⚽ Gol de Kennedy (Fluminense)",
+      "' 🟥 Cartão vermelho para Xavier"
+    ]
   }
 ]
