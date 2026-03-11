@@ -159,10 +159,11 @@ fetch("/remover-jogo",{
 method:"POST"
 })
 
-.then(() => {
-alert("Jogo finalizado!");
-})
+.then(() => {alert("Jogo finalizado!");})
 
+// limpa os campos dos times
+document.getElementById("timeA").value = ""
+document.getElementById("timeB").value = ""
 }
 
 </script>
