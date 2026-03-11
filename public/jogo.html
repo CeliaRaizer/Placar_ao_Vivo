@@ -1,17 +1,52 @@
 <link rel="stylesheet" href="assets/css/jogo.css">
 
+<header>
+    <div class="container">
+        <h1>Placar ao Vivo</h1>
+        <p>Acompanhe o jogo em tempo real</p>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="jogo.html">Placar</a></li>
+        <li><a href="historico.html">Histórico</a></li>
+        <li><a href="admin.html">Admin</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+<section class="placar-section">
+
 <h1 id="placar"></h1>
 
 <h2 id="tempo"></h2>
+
+</section>
+
+<section>
 
 <h3>Minuto a minuto</h3>
 
 <ul id="eventos"></ul>
 
+</section>
+
+<section class="conexao">
+
 <p id="status">🔴 Desconectado</p>
 
-<button id="btnConectar">🔌 Conectar</button>
-<button id="btnDesconectar">❌ Desconectar</button>
+<button id="btnConectar">🔌 Conectar</button> <button id="btnDesconectar">❌ Desconectar</button>
+
+</section>
+
+</div>
+
+<footer>
+<p>Sistema de Placar em Tempo Real</p>
+</footer>
 
 <script>
 
@@ -47,10 +82,17 @@ function conectar(){
     ws.onclose = () => {
         status.innerText = "🔴 Conexão encerrada"
     }
-
+    
     ws.onmessage = (event) => {
 
-        const jogo = JSON.parse(event.data)
+        const dados = JSON.parse(event.data)
+
+        // ignorar mensagens que não são do jogo
+        if(dados.tipo){
+            return
+        }
+
+        const jogo = dados
 
         if(!jogo.timeA){
             placar.innerText = "Nenhum jogo em andamento"

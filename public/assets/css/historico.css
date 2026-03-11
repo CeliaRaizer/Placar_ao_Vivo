@@ -1,157 +1,233 @@
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: Arial, Helvetica, sans-serif;
+}
+
 body{
-    font-family: Arial, Helvetica, sans-serif;
-    background:#f4f6f8;
-    padding:30px;
+background:#f4f6f8;
+color:#2c3e50;
+}
+
+/* CONTAINER */
+
+.container{
+width:90%;
+max-width:900px;
+margin:auto;
+}
+
+/* HEADER */
+
+header{
+background:#2c3e50;
+color:white;
+padding:30px 0;
+text-align:center;
+margin-bottom:20px;
+}
+
+header h1{
+font-size:28px;
+margin-bottom:5px;
+}
+
+/* NAV */
+
+nav{
+background:white;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
+margin-bottom:30px;
+}
+
+nav ul{
+list-style:none;
+display:flex;
+justify-content:center;
+gap:10px;
+padding:10px;
+}
+
+nav a{
+text-decoration:none;
+padding:10px 18px;
+border-radius:6px;
+color:#2c3e50;
+font-weight:600;
+transition:0.2s;
+}
+
+nav a:hover{
+background:#3498db;
+color:white;
 }
 
 /* TÍTULO */
 
 h1{
-    text-align:center;
-    margin-bottom:20px;
+text-align:center;
+margin-bottom:20px;
 }
 
 /* STATUS */
 
 #status{
-    text-align:center;
-    font-weight:bold;
-    margin-bottom:15px;
+text-align:center;
+font-weight:bold;
+margin-bottom:15px;
 }
 
-/* BOTÕES CONECTAR */
+/* BOTÕES */
 
 button{
-    cursor:pointer;
-    border:none;
-    border-radius:6px;
-    padding:8px 12px;
-    font-size:14px;
-    transition:0.2s;
+cursor:pointer;
+border:none;
+border-radius:6px;
+padding:8px 12px;
+font-size:14px;
+transition:0.2s;
 }
 
 button:hover{
-    transform:scale(1.05);
+transform:scale(1.05);
 }
 
 /* LISTA */
 
 ul{
-    list-style:none;
-    padding:0;
-    max-width:700px;
-    margin:auto;
+list-style:none;
+padding:0;
+max-width:700px;
+margin:auto;
 }
 
 /* CARD DO JOGO */
 
 .card-jogo{
-    background:white;
-    border-radius:10px;
-    padding:15px;
-    margin-bottom:10px;
+background:white;
+border-radius:10px;
+padding:15px;
+margin-bottom:10px;
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+display:flex;
+justify-content:space-between;
+align-items:center;
 
-    box-shadow:0 2px 8px rgba(0,0,0,0.08);
-    transition:0.2s;
+box-shadow:0 2px 8px rgba(0,0,0,0.08);
+transition:0.2s;
 }
 
 .card-jogo:hover{
-    transform:translateY(-2px);
-    box-shadow:0 4px 12px rgba(0,0,0,0.12);
+transform:translateY(-2px);
+box-shadow:0 4px 12px rgba(0,0,0,0.12);
 }
 
 /* INFO DO JOGO */
 
 .jogo-info{
-    display:flex;
-    flex-direction:column;
+display:flex;
+flex-direction:column;
 }
 
 .placar{
-    font-size:18px;
-    font-weight:bold;
+font-size:18px;
+font-weight:bold;
 }
 
 .data{
-    font-size:13px;
-    color:#777;
+font-size:13px;
+color:#777;
 }
 
 /* BOTÕES DO CARD */
 
 .botoes{
-    display:flex;
-    gap:10px;
+display:flex;
+gap:10px;
 }
 
 /* DETALHES */
 
 .btn-detalhes{
-    background:#3498db;
-    color:white;
+background:#3498db;
+color:white;
 }
 
 .btn-detalhes:hover{
-    background:#2980b9;
+background:#2980b9;
 }
 
 /* EXCLUIR */
 
 .btn-excluir{
-    background:#e74c3c;
-    color:white;
+background:#e74c3c;
+color:white;
 }
 
 .btn-excluir:hover{
-    background:#c0392b;
+background:#c0392b;
 }
 
 /* AREA DOS DETALHES */
 
 .detalhes-jogo{
-    max-width:700px;
-    margin:auto;
+max-width:700px;
+margin:auto;
+margin-top:20px;
 }
 
 .detalhes-card{
-    background:#ffffff;
-    border-left:4px solid #3498db;
-    padding:12px 15px;
-    margin-bottom:15px;
-    border-radius:6px;
+background:#ffffff;
+border-left:4px solid #3498db;
+padding:12px 15px;
+margin-bottom:15px;
+border-radius:6px;
 
-    box-shadow:0 1px 4px rgba(0,0,0,0.05);
+box-shadow:0 1px 4px rgba(0,0,0,0.05);
 }
 
 .detalhes-card h3{
-    margin-top:0;
+margin-bottom:8px;
 }
 
 .detalhes-card ul{
-    padding-left:20px;
+padding-left:20px;
 }
 
 .detalhes-card li{
-    margin-bottom:4px;
+margin-bottom:4px;
+}
+
+/* FOOTER */
+
+footer{
+margin-top:40px;
+padding:20px;
+text-align:center;
+background:#2c3e50;
+color:white;
 }
 
 /* RESPONSIVO */
 
-@media (max-width:600px){
+@media (max-width:700px){
 
-    .card-jogo{
-        flex-direction:column;
-        align-items:flex-start;
-        gap:10px;
-    }
+nav ul{
+flex-wrap:wrap;
+}
 
-    .botoes{
-        width:100%;
-        justify-content:flex-end;
-    }
+.card-jogo{
+flex-direction:column;
+align-items:flex-start;
+gap:10px;
+}
+
+.botoes{
+width:100%;
+justify-content:flex-end;
+}
 
 }

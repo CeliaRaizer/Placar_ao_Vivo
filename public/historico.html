@@ -1,13 +1,39 @@
 <link rel="stylesheet" href="assets/css/historico.css">
 
-<h1>Jogos Anteriores</h1>
+<header>
+    <div class="container">
+        <h1>Histórico de Jogos</h1>
+        <p>Partidas já finalizadas</p>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="jogo.html">Placar</a></li>
+        <li><a href="historico.html">Histórico</a></li>
+        <li><a href="admin.html">Admin</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+
+<h2>Jogos Anteriores</h2>
 
 <p id="status">🔴 Desconectado</p>
 
-<button onclick="conectar()">🔌 Conectar</button>
-<button onclick="desconectar()">❌ Desconectar</button>
+<div class="conexao">
+    <button onclick="conectar()">🔌 Conectar</button>
+    <button onclick="desconectar()">❌ Desconectar</button>
+</div>
 
 <ul id="lista"></ul>
+
+</div>
+
+<footer>
+<p>Sistema de Placar em Tempo Real</p>
+</footer>
 
 <script>
 

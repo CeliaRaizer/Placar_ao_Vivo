@@ -30,6 +30,10 @@ wss.on("connection", ws => {
 
     console.log("Cliente conectado")
 
+    // enviar estado atual do jogo
+    ws.send(JSON.stringify(jogo.obterDados()))
+
+    // enviar histórico
     ws.send(JSON.stringify({
         tipo: "historico-atualizado",
         historico: historico.listarJogos()
