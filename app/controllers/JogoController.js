@@ -31,21 +31,17 @@ class JogoController {
     }
 
     cartao(req,res){
-
-        const { jogador, minuto, tipo } = req.body
-
+        const { jogador, minuto, tipo, time } = req.body
         this.jogo.atualizarMinuto(minuto)
 
         if(tipo === "amarelo"){
-            this.jogo.cartaoAmarelo(jogador)
+            this.jogo.cartaoAmarelo(jogador, time)
         }else{
-            this.jogo.cartaoVermelho(jogador)
+            this.jogo.cartaoVermelho(jogador, time)
         }
 
         this.notificador.notificar(this.jogo.obterDados())
-
-        res.json({ok:true})
-
+        res.json({ok:true}) 
     }
 
     definirTimes(req, res) {
@@ -60,25 +56,25 @@ class JogoController {
 
     }
 
-removerJogo(req,res){
+    removerJogo(req,res){
 
-    // salva jogo no histórico
-    this.historico.salvarJogo(this.jogo.obterDados())
+        // salva jogo no histórico
+        this.historico.salvarJogo(this.jogo.obterDados())
 
-    // remove jogo atual
-    this.jogo.removerJogo()
+        // remove jogo atual
+        this.jogo.removerJogo()
 
-    // atualiza placar para quem acompanha ao vivo
-    this.notificador.notificar(this.jogo.obterDados())
+        // atualiza placar para quem acompanha ao vivo
+        this.notificador.notificar(this.jogo.obterDados())
 
-    // envia histórico atualizado
-    this.notificador.notificar({
-        tipo: "historico-atualizado",
-        historico: this.historico.listarJogos()
-    })
+        // envia histórico atualizado
+        this.notificador.notificar({
+            tipo: "historico-atualizado",
+            historico: this.historico.listarJogos()
+        })
 
-    res.json({ok:true})
-}
+        res.json({ok:true})
+    }
 }
 
 module.exports = JogoController;

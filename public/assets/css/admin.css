@@ -1,5 +1,4 @@
 /* Coordenacao.css */
-
 *{
 margin:0;
 padding:0;
@@ -13,7 +12,6 @@ color:#2c3e50;
 }
 
 /* CONTAINER */
-
 .container{
 width:90%;
 max-width:1100px;
@@ -21,7 +19,6 @@ margin:auto;
 }
 
 /* HEADER */
-
 header{
 background:#2c3e50;
 color:white;
@@ -36,7 +33,6 @@ margin-bottom:5px;
 }
 
 /* NAV */
-
 nav{
 background:white;
 box-shadow:0 2px 5px rgba(0,0,0,0.1);
@@ -66,7 +62,6 @@ color:white;
 }
 
 /* SEÇÕES */
-
 section{
 background:white;
 padding:25px;
@@ -76,7 +71,6 @@ box-shadow:0 2px 6px rgba(0,0,0,0.1);
 }
 
 /* TITULOS */
-
 h2{
 margin-bottom:15px;
 border-left:5px solid #222;
@@ -84,7 +78,6 @@ padding-left:10px;
 }
 
 /* INPUTS */
-
 input, select{
 
 width:100%;
@@ -107,26 +100,17 @@ border-color:#222;
 }
 
 /* BOTÕES */
-
 button{
-
 padding:10px 18px;
-
 border:none;
 border-radius:6px;
-
 cursor:pointer;
-
 font-weight:600;
-
 margin-right:10px;
 margin-top:5px;
-
 background:#2c3e50;
 color:white;
-
 transition:0.2s;
-
 }
 
 button:hover{
@@ -135,7 +119,6 @@ background:#2c3e50;
 }
 
 /* BOTÕES ESPECIAIS */
-
 button:nth-child(3){
 background:#3498db;
 }
@@ -145,7 +128,6 @@ background:#f39c12;
 }
 
 /* REMOVER JOGO */
-
 button:last-of-type{
 background:#e74c3c;
 }
@@ -155,7 +137,6 @@ background:#c0392b;
 }
 
 /* FOOTER */
-
 footer{
 margin-top:40px;
 padding:20px;
@@ -165,7 +146,6 @@ color:white;
 }
 
 /* RESPONSIVO */
-
 @media(max-width:700px){
 
 nav ul{

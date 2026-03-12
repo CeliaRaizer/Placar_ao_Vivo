@@ -7,15 +7,11 @@ class Notificador {
     }
 
     notificar(dados) {
-
         this.wss.clients.forEach(cliente => {
-
             if (cliente.readyState === WebSocket.OPEN) {
                 cliente.send(JSON.stringify(dados));
             }
-
         });
-
     }
 
 }

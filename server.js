@@ -30,6 +30,8 @@ wss.on("connection", ws => {
 
     console.log("Cliente conectado")
 
+    enviarUsuarios()
+
     // enviar estado atual do jogo
     ws.send(JSON.stringify(jogo.obterDados()))
 
@@ -39,7 +41,29 @@ wss.on("connection", ws => {
         historico: historico.listarJogos()
     }))
 
+    ws.on("close", () => {
+        console.log("Cliente desconectado")
+        enviarUsuarios()
+    })
+
 })
+
+function enviarUsuarios(){
+
+    const total = wss.clients.size
+
+    const dados = JSON.stringify({
+        tipo: "usuarios",
+        total: total
+    })
+
+    wss.clients.forEach(cliente => {
+        if(cliente.readyState === WebSocket.OPEN){
+            cliente.send(dados)
+        }
+    })
+
+}
 
 // rotas
 const rotas = configurarRotas(app, jogoController);

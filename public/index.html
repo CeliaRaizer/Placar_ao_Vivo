@@ -1,139 +1,126 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Brasileirão - Sistema de Jogos</title>
+        <link rel="stylesheet" href="/css/home.css">
+        <link rel="stylesheet" href="assets/css/style.css">
 
-<head>
-<meta charset="UTF-8">
-<title>Brasileirão - Sistema de Jogos</title>
+    </head>
 
-<link rel="stylesheet" href="/css/home.css">
-<link rel="stylesheet" href="assets/css/style.css">
+    <body>
 
-</head>
+        <header>
+            <h1>⚽ Brasileirão</h1>
 
-<body>
-
-<header>
-
-<h1>⚽ Brasileirão</h1>
-
-<nav class="menu">
-<a href="#" onclick="mostrarSecao('home')">Home</a>
-<a href="#" onclick="mostrarSecao('sobre')">Sobre</a>
-<a href="#" onclick="mostrarSecao('funcionalidades')">Funcionalidades</a>
-</nav>
-
-</header>
+            <nav class="menu">
+            <a href="#" onclick="mostrarSecao('home')">Home</a>
+            <a href="#" onclick="mostrarSecao('sobre')">Sobre</a>
+            <a href="#" onclick="mostrarSecao('funcionalidades')">Funcionalidades</a>
+            </nav>
+        </header>
 
 
-<!-- HOME -->
+        <!-- HOME -->
 
-<section id="home" class="secao">
+        <section id="home" class="secao">
 
-<section class="cards">
+        <section class="cards">
 
-<a href="/admin.html" class="card">
+        <a href="/admin.html" class="card">
 
-<div class="icon">🧑‍⚖️</div>
+        <div class="icon">🧑‍⚖️</div>
 
-<h2>Coordenação</h2>
+        <h2>Coordenação</h2>
 
-<p>
-Registrar jogos, gols, cartões e controlar a partida.
-</p>
+        <p>
+        Registrar jogos, gols, cartões e controlar a partida.
+        </p>
 
-</a>
-
-
-<a href="/jogo.html" class="card">
-
-<div class="icon">🏟️</div>
-
-<h2>Acompanhar Jogo</h2>
-
-<p>
-Ver o placar e eventos do jogo em tempo real.
-</p>
-
-</a>
+        </a>
 
 
-<a href="/historico.html" class="card">
+        <a href="/jogo.html" class="card">
 
-<div class="icon">⚽</div>
+        <div class="icon">🏟️</div>
 
-<h2>Jogos Anteriores</h2>
+        <h2>Acompanhar Jogo</h2>
 
-<p>
-Consultar histórico de partidas finalizadas.
-</p>
+        <p>
+        Ver o placar e eventos do jogo em tempo real.
+        </p>
 
-</a>
-
-</section>
-
-</section>
+        </a>
 
 
-<!-- SOBRE -->
+        <a href="/historico.html" class="card">
 
-<section id="sobre" class="secao escondida">
+        <div class="icon">⚽</div>
 
-<h2>Sobre o Sistema</h2>
+        <h2>Jogos Anteriores</h2>
 
-<p>
-Este sistema permite acompanhar partidas de futebol em tempo real.
-Os administradores podem registrar gols, cartões e controlar o andamento da partida,
-enquanto os espectadores acompanham as atualizações automaticamente.
-</p>
+        <p>
+        Consultar histórico de partidas finalizadas.
+        </p>
 
-<h3>Tecnologias utilizadas</h3>
+        </a>
 
-<ul>
+        </section>
 
-<li>⚡ Node.js</li>
-<li>🚀 Express</li>
-<li>🔌 WebSocket para comunicação em tempo real</li>
-<li>🌐 HTML, CSS e JavaScript</li>
-
-</ul>
-
-</section>
+        </section>
 
 
-<!-- FUNCIONALIDADES -->
+        <!-- SOBRE -->
 
-<section id="funcionalidades" class="secao escondida">
+        <section id="sobre" class="secao escondida">
+            <h2>Sobre o Sistema</h2>
+            
+            <p>
+            Este sistema permite acompanhar partidas de futebol em tempo real.
+            Os administradores podem registrar gols, cartões e controlar o andamento da partida,
+            enquanto os espectadores acompanham as atualizações automaticamente.
+            </p>
+            
+            <h3>Tecnologias utilizadas</h3>
+            
+            <ul>
+            <li>⚡ Node.js</li>
+            <li>🚀 Express</li>
+            <li>🔌 WebSocket para comunicação em tempo real</li>
+            <li>🌐 HTML, CSS e JavaScript</li>
+            </ul>
 
-<h2>Funcionalidades</h2>
-
-<ul>
-
-<li>⚽ Criar partidas</li>
-<li>📊 Atualizar placar</li>
-<li>⚽ Registrar gols</li>
-<li>🟨 Registrar cartão amarelo</li>
-<li>🟥 Registrar cartão vermelho</li>
-<li>📡 Atualização em tempo real</li>
-<li>📜 Histórico de jogos</li>
-
-</ul>
-
-</section>
+        </section>
 
 
-<script>
+        <!-- FUNCIONALIDADES -->
 
-function mostrarSecao(id){
+        <section id="funcionalidades" class="secao escondida">
+            <h2>Funcionalidades</h2>
 
-document.querySelectorAll(".secao").forEach(secao=>{
-secao.classList.add("escondida")
-})
+            <ul>
+            <li>⚽ Criar partidas</li>
+            <li>📊 Atualizar placar</li>
+            <li>⚽ Registrar gols</li>
+            <li>🟨 Registrar cartão amarelo</li>
+            <li>🟥 Registrar cartão vermelho</li>
+            <li>📡 Atualização em tempo real</li>
+            <li>📜 Histórico de jogos</li>
+            </ul>
+        </section>
 
-document.getElementById(id).classList.remove("escondida")
 
-}
+        <script>
 
-</script>
+            function mostrarSecao(id){
+                document.querySelectorAll(".secao").forEach(secao=>{
+                secao.classList.add("escondida")
+                })
 
-</body>
+                document.getElementById(id).classList.remove("escondida")
+            }
+
+        </script>
+
+    </body>
 </html>

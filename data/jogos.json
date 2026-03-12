@@ -1,93 +1,15 @@
 [
   {
-    "id": 1773186220934,
-    "timeA": "São Paulo",
-    "timeB": "Bragantino",
-    "golsA": 0,
-    "golsB": 1,
-    "minuto": "82",
-    "data": "10/03/2026, 20:43:40",
-    "eventos": [
-      "64' ⚽ Gol de Lucas (Bragantino)",
-      "82' 🟥 Cartão vermelho para arboleda"
-    ]
-  },
-  {
-    "id": 1773260766281,
-    "timeA": "Vasco",
-    "timeB": "Fluminense",
-    "golsA": 1,
-    "golsB": 0,
-    "minuto": "78",
-    "data": "11/03/2026, 17:26:06",
-    "eventos": [
-      "35' ⚽ Gol de Coutinho (Vasco)",
-      "78' 🟥 Cartão vermelho para Martinelli"
-    ]
-  },
-  {
-    "id": 1773267034599,
-    "timeA": "Corinthians",
-    "timeB": "Flamengo",
-    "golsA": 2,
-    "golsB": 0,
-    "minuto": "78",
-    "data": "11/03/2026, 19:10:34",
-    "eventos": [
-      "30' ⚽ Gol de Memphis (Corinthians)",
-      "78' ⚽ Gol de Yuri (Corinthians)"
-    ]
-  },
-  {
-    "id": 1773267091548,
-    "timeA": "Vasco",
-    "timeB": "Flamengo",
-    "golsA": 0,
-    "golsB": 0,
-    "minuto": 0,
-    "data": "11/03/2026, 19:11:31",
-    "eventos": []
-  },
-  {
-    "id": 1773270528259,
-    "timeA": "Mirassol",
-    "timeB": "Santos",
-    "golsA": 2,
-    "golsB": 2,
-    "minuto": "65",
-    "data": "11/03/2026, 20:08:48",
-    "eventos": [
-      "21' ⚽ Gol de Formiga (Mirassol)",
-      "71' ⚽ Gol de Negueba (Mirassol)",
-      "80' ⚽ Gol de Gabriel (Santos)",
-      "88' ⚽ Gol de Gabriel (Santos)",
-      "91' 🟨 Cartão amarelo para Gabriel",
-      "65' 🟨 Cartão amarelo para W.Machado"
-    ]
-  },
-  {
-    "id": 1773271785386,
+    "id": 1773313324268,
     "timeA": "Atlético-MG",
     "timeB": "Internacional",
     "golsA": 1,
     "golsB": 0,
-    "minuto": "2",
-    "data": "11/03/2026, 20:29:45",
+    "minuto": "97",
+    "data": "12/03/2026, 08:02:04",
     "eventos": [
-      "2' ⚽ Gol de Tomás Cuello (Atlético-MG)"
-    ]
-  },
-  {
-    "id": 1773271862779,
-    "timeA": "Remo",
-    "timeB": "Fluminense",
-    "golsA": 0,
-    "golsB": 1,
-    "minuto": "",
-    "data": "11/03/2026, 20:31:02",
-    "eventos": [
-      "37' ⚽ Gol de Kennedy (Fluminense)",
-      "' 🟥 Cartão vermelho para Xavier"
+      "2' ⚽ Gol de Cuello (Atlético-MG)",
+      "97' 🟨 Cartão amarelo para V. Gabriel (Internacional)"
     ]
   }
 ]

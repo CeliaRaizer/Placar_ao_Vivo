@@ -18,152 +18,160 @@
 
 <div class="container">
 
-<section>
+    <section>
 
-<h2>Criar Jogo</h2>
+        <h2>Criar Jogo</h2>
 
-<input id="timeA" placeholder="Nome do Time A">
-<input id="timeB" placeholder="Nome do Time B">
+        <input id="timeA" placeholder="Nome do Time A">
+        <input id="timeB" placeholder="Nome do Time B">
 
-<button class="btn btn-primary" onclick="criarJogo()">Criar Jogo</button>
+        <button class="btn btn-primary" onclick="criarJogo()">Criar Jogo</button>
 
-</section>
+    </section>
 
 
-<section>
+    <section>
 
-<h2>Registrar Gol</h2>
+        <h2>Registrar Gol</h2>
 
-<input id="jogador" placeholder="Nome do jogador">
-<input id="minuto" placeholder="Minuto do jogo">
+        <input id="jogador" placeholder="Nome do jogador">
+        <input id="minuto" placeholder="Minuto do jogo">
 
-<div class="action-buttons">
-<button class="btn btn-success" onclick="golA()">⚽ Gol Time A</button>
-<button class="btn btn-success" onclick="golB()">⚽ Gol Time B</button>
+        <div class="action-buttons">
+            <button class="btn btn-success" onclick="golA()">⚽ Gol Time A</button>
+            <button class="btn btn-success" onclick="golB()">⚽ Gol Time B</button>
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <h2>Registrar Cartão</h2>
+
+        <input id="jogadorCartao" placeholder="Nome do jogador">
+        <input id="minutoCartao" placeholder="Minuto do jogo">
+
+        <select id="tipoCartao">
+            <option value="amarelo">🟨 Cartão Amarelo</option>
+            <option value="vermelho">🟥 Cartão Vermelho</option>
+        </select>
+
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="cartaoA()">Cartão Time A</button>
+            <button class="btn btn-primary" onclick="cartaoB()">Cartão Time B</button>
+        </div>
+
+    </section>
+
+
+    <section>
+        <h2>Remover Jogo</h2>
+        <button class="btn btn-danger" onclick="removerJogo()">Finalizar Jogo</button>
+    </section>
+
 </div>
-
-</section>
-
-
-<section>
-
-<h2>Registrar Cartão</h2>
-
-<input id="jogadorCartao" placeholder="Nome do jogador">
-<input id="minutoCartao" placeholder="Minuto do jogo">
-
-<select id="tipoCartao">
-<option value="amarelo">🟨 Cartão Amarelo</option>
-<option value="vermelho">🟥 Cartão Vermelho</option>
-</select>
-
-<button class="btn btn-primary" onclick="registrarCartao()">Registrar Cartão</button>
-
-</section>
-
-
-<section>
-
-<h2>Remover Jogo</h2>
-
-<button class="btn btn-danger" onclick="removerJogo()">Finalizar Jogo</button>
-
-</section>
-
-</div>
-
 
 <footer>
-<p>Sistema de Placar em Tempo Real</p>
+    <p>Sistema de Placar em Tempo Real</p>
 </footer>
 
 <script>
 
-function criarJogo(){
+    function criarJogo(){
+        const timeA = document.getElementById("timeA").value
+        const timeB = document.getElementById("timeB").value
 
-const timeA = document.getElementById("timeA").value
-const timeB = document.getElementById("timeB").value
+        fetch("/definir-times",{
+            method:"POST",
+            headers:{
+            "Content-Type":"application/json"
+            },
+            body: JSON.stringify({timeA,timeB})
+        })
+    }
 
-fetch("/definir-times",{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body: JSON.stringify({timeA,timeB})
-})
+    function golA(){
+        const jogador = document.getElementById("jogador").value
+        const minuto = document.getElementById("minuto").value
 
-}
+        fetch("/golA",{
+        method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify({jogador,minuto})
+        })
 
-
-function golA(){
-
-const jogador = document.getElementById("jogador").value
-const minuto = document.getElementById("minuto").value
-
-fetch("/golA",{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body: JSON.stringify({jogador,minuto})
-})
-
-document.getElementById("jogador").value = ""
-document.getElementById("minuto").value = ""
-
-}
+        document.getElementById("jogador").value = ""
+        document.getElementById("minuto").value = ""
+    }
 
 
-function golB(){
+    function golB(){
+        const jogador = document.getElementById("jogador").value
+        const minuto = document.getElementById("minuto").value
 
-const jogador = document.getElementById("jogador").value
-const minuto = document.getElementById("minuto").value
+        fetch("/golB",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify({jogador,minuto})
+        })
 
-fetch("/golB",{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body: JSON.stringify({jogador,minuto})
-})
-
-document.getElementById("jogador").value = ""
-document.getElementById("minuto").value = ""
-
-}
+        document.getElementById("jogador").value = ""
+        document.getElementById("minuto").value = ""
+    }
 
 
-function registrarCartao(){
+    function cartaoA(){
 
-const jogador = document.getElementById("jogadorCartao").value
-const minuto = document.getElementById("minutoCartao").value
-const tipo = document.getElementById("tipoCartao").value
+        const jogador = document.getElementById("jogadorCartao").value
+        const minuto = document.getElementById("minutoCartao").value
+        const tipo = document.getElementById("tipoCartao").value
 
-fetch("/cartao",{
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-body: JSON.stringify({jogador,minuto,tipo})
-})
+        fetch("/cartao",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify({jogador,minuto,tipo,time:"A"})
+        })
 
-document.getElementById("jogadorCartao").value = ""
-document.getElementById("minutoCartao").value = ""
+        document.getElementById("jogadorCartao").value = ""
+        document.getElementById("minutoCartao").value = ""
+    }
 
-}
+
+    function cartaoB(){
+
+        const jogador = document.getElementById("jogadorCartao").value
+        const minuto = document.getElementById("minutoCartao").value
+        const tipo = document.getElementById("tipoCartao").value
+
+        fetch("/cartao",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify({jogador,minuto,tipo,time:"B"})
+        })
+
+        document.getElementById("jogadorCartao").value = ""
+        document.getElementById("minutoCartao").value = ""
+    }
 
 
-function removerJogo(){
+    function removerJogo(){
+        fetch("/remover-jogo",{
+            method:"POST"
+        })
 
-fetch("/remover-jogo",{
-method:"POST"
-})
+        .then(() => {alert("Jogo finalizado!");})
 
-.then(() => {alert("Jogo finalizado!");})
-
-// limpa os campos dos times
-document.getElementById("timeA").value = ""
-document.getElementById("timeB").value = ""
-}
+        document.getElementById("timeA").value = ""
+        document.getElementById("timeB").value = ""
+    }
 
 </script>

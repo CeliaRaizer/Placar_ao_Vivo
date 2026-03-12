@@ -47,13 +47,19 @@ class Jogo {
         this.jogo.eventos.push(evento);
     }
 
-    cartaoAmarelo(jogador) { 
-        const evento = `${this.jogo.minuto}' 🟨 Cartão amarelo para ${jogador}`;
-        this.jogo.eventos.push(evento); 
+    cartaoAmarelo(jogador, time) {
+        const nomeTime = time === "A" ? this.jogo.timeA : this.jogo.timeB
+
+        const evento =
+            `${this.jogo.minuto}' 🟨 Cartão amarelo para ${jogador} (${nomeTime})`;
+        this.jogo.eventos.push(evento);
     }
 
-    cartaoVermelho(jogador) {
-        const evento = `${this.jogo.minuto}' 🟥 Cartão vermelho para ${jogador}`;
+    cartaoVermelho(jogador, time) {
+        const nomeTime = time === "A" ? this.jogo.timeA : this.jogo.timeB
+
+        const evento =
+            `${this.jogo.minuto}' 🟥 Cartão vermelho para ${jogador} (${nomeTime})`;
         this.jogo.eventos.push(evento);
     }
 

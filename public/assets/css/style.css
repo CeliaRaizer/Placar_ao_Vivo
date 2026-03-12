@@ -1,5 +1,4 @@
 /* ===== RESET ===== */
-
 body{
     font-family: Arial, Helvetica, sans-serif;
     background:#f4f6f8;
@@ -9,7 +8,6 @@ body{
 
 
 /* ===== TITULOS ===== */
-
 h1{
     text-align:center;
 }
@@ -18,9 +16,7 @@ h2{
     text-align:center;
 }
 
-
 /* ===== CONTAINER ===== */
-
 .container{
     max-width:900px;
     margin:auto;
@@ -32,7 +28,6 @@ h2{
 
 
 /* ===== PLACAR ===== */
-
 #placar{
     font-size:40px;
     font-weight:bold;
@@ -48,7 +43,6 @@ h2{
 
 
 /* ===== STATUS ===== */
-
 #status{
     text-align:center;
     font-weight:bold;
@@ -56,7 +50,6 @@ h2{
 
 
 /* ===== EVENTOS ===== */
-
 #eventos{
     list-style:none;
     padding:0;
@@ -73,7 +66,6 @@ h2{
 
 
 /* ===== FORMULÁRIOS ===== */
-
 input, select{
     padding:6px;
     margin:5px;
@@ -83,7 +75,6 @@ input, select{
 
 
 /* ===== BOTÕES ===== */
-
 button{
     padding:7px 12px;
     border:none;
@@ -97,7 +88,6 @@ button:hover{
 }
 
 /* botões específicos */
-
 .btn-gol{
     background:#27ae60;
     color:white;
@@ -120,7 +110,6 @@ button:hover{
 
 
 /* ===== HISTÓRICO ===== */
-
 #lista{
     list-style:none;
     padding:0;
