@@ -10,6 +10,7 @@ module.exports = (app, jogoController) => {
     router.post("/definir-times", (req, res) => jogoController.definirTimes(req, res));
     router.post("/remover-jogo", (req,res) => jogoController.removerJogo(req,res));
     router.get("/historico",(req,res)=> {res.json(jogoController.historico.listarJogos())})
+    router.post("/historico/remover", (req,res) =>jogoController.removerHistorico(req,res))
 
     router.post("/historico/remover",(req,res)=>{ const { index } = req.body 
         jogoController.historico.removerJogo(index)

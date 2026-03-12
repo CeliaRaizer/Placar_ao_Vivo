@@ -11,5 +11,115 @@
       "2' ⚽ Gol de Cuello (Atlético-MG)",
       "97' 🟨 Cartão amarelo para V. Gabriel (Internacional)"
     ]
+  },
+  {
+    "id": 1773318857067,
+    "timeA": "Corinthians",
+    "timeB": "Palmeiras",
+    "golsA": 2,
+    "golsB": 0,
+    "minuto": "81",
+    "data": "12/03/2026, 09:34:17",
+    "eventos": [
+      "33' ⚽ Gol de Yuri Alberto (Corinthians)",
+      "57' 🟨 Cartão amarelo para Piquerez (Palmeiras)",
+      "81' ⚽ Gol de Memphis (Corinthians)"
+    ]
+  },
+  {
+    "id": 1773332986876,
+    "timeA": "Bragantino",
+    "timeB": "Bahia",
+    "golsA": 1,
+    "golsB": 0,
+    "minuto": "78",
+    "data": "12/03/2026, 13:29:46",
+    "eventos": [
+      "78' ⚽ Gol de Arthur (Bragantino)"
+    ]
+  },
+  {
+    "id": 1773352485715,
+    "timeA": "São Paulo",
+    "timeB": "Fluminense",
+    "golsA": 0,
+    "golsB": 1,
+    "minuto": "85",
+    "data": "12/03/2026, 18:54:45",
+    "eventos": [
+      "74' ⚽ Gol de Martinelli (Fluminense)",
+      "85' 🟥 Cartão vermelho para Lucas Moura (São Paulo)"
+    ]
+  },
+  {
+    "id": 1773352712839,
+    "timeA": "Athetico-PR",
+    "timeB": "Grêmio",
+    "golsA": 1,
+    "golsB": 0,
+    "minuto": "66",
+    "data": "12/03/2026, 18:58:32",
+    "eventos": [
+      "33' ⚽ Gol de Leozinho (Athetico-PR)",
+      "66' 🟨 Cartão amarelo para Leonardo (Athetico-PR)"
+    ]
+  },
+  {
+    "id": 1773352802581,
+    "timeA": "Mirassol",
+    "timeB": "Chapecoense",
+    "golsA": 0,
+    "golsB": 1,
+    "minuto": "90",
+    "data": "12/03/2026, 19:00:02",
+    "eventos": [
+      "90' ⚽ Gol de Giovanni (Chapecoense)"
+    ]
+  },
+  {
+    "id": 1773353177340,
+    "timeA": "Santos",
+    "timeB": "EC Vitória",
+    "golsA": 1,
+    "golsB": 0,
+    "minuto": "71",
+    "data": "12/03/2026, 19:06:17",
+    "eventos": [
+      "71' ⚽ Gol de Gabriel (Santos)"
+    ]
+  },
+  {
+    "id": 1773353219971,
+    "timeA": "Remo",
+    "timeB": "Botafogo",
+    "golsA": 0,
+    "golsB": 0,
+    "minuto": 0,
+    "data": "12/03/2026, 19:06:59",
+    "eventos": []
+  },
+  {
+    "id": 1773353295108,
+    "timeA": "Cruzeiro",
+    "timeB": "Vasco da Gama",
+    "golsA": 0,
+    "golsB": 1,
+    "minuto": "10",
+    "data": "12/03/2026, 19:08:15",
+    "eventos": [
+      "10' ⚽ Gol de Coutinho (Vasco da Gama)"
+    ]
+  },
+  {
+    "id": 1773353398487,
+    "timeA": "Flamengo",
+    "timeB": "Coritiba",
+    "golsA": 0,
+    "golsB": 1,
+    "minuto": "60",
+    "data": "12/03/2026, 19:09:58",
+    "eventos": [
+      "60' ⚽ Gol de Clayson (Coritiba)"
+    ]
   }
 ]

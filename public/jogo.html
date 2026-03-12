@@ -13,6 +13,7 @@
         <li><a href="jogo.html">Placar</a></li>
         <li><a href="historico.html">Histórico</a></li>
         <li><a href="admin.html">Admin</a></li>
+        <li><a href="classificacao.html">Classificação</a></li>
     </ul>
 </nav>
 
@@ -42,85 +43,101 @@
 
 <script>
 
-    let ws = null
+let ws = null
 
-    const placar = document.getElementById("placar")
-    const tempo = document.getElementById("tempo")
-    const lista = document.getElementById("eventos")
-    const status = document.getElementById("status")
+const placar = document.getElementById("placar")
+const tempo = document.getElementById("tempo")
+const lista = document.getElementById("eventos")
+const status = document.getElementById("status")
 
-    document.getElementById("btnConectar").addEventListener("click", conectar)
-    document.getElementById("btnDesconectar").addEventListener("click", desconectar)
+document.getElementById("btnConectar").addEventListener("click", conectar)
+document.getElementById("btnDesconectar").addEventListener("click", desconectar)
 
-    function conectar(){
+function conectar(){
 
-        if(ws && ws.readyState === WebSocket.OPEN){
-            status.innerText = "🟢 Já conectado"
+    if(ws && ws.readyState === WebSocket.OPEN){
+        status.innerText = "🟢 Já conectado"
+        return
+    }
+
+    status.innerText = "🟡 Conectando..."
+
+    ws = new WebSocket("ws://localhost:3000")
+
+    ws.onopen = () => {
+        status.innerText = "🟢 Conectado ao servidor"
+    }
+
+    ws.onerror = () => {
+        status.innerText = "❌ Erro na conexão"
+    }
+
+    ws.onclose = () => {
+        status.innerText = "🔴 Conexão encerrada"
+    }
+
+    ws.onmessage = (event) => {
+
+        const dados = JSON.parse(event.data)
+
+        // usuários conectados
+        if(dados.tipo === "usuarios"){
+            document.getElementById("usuarios").innerText =
+                "👥 Usuários conectados: " + dados.total
             return
         }
 
-        status.innerText = "🟡 Conectando..."
+        let jogo = null
 
-        ws = new WebSocket("ws://localhost:3000")
-
-        ws.onopen = () => {
-            status.innerText = "🟢 Conectado ao servidor"
+        if(dados.tipo === "jogo-atualizado"){
+            jogo = dados.jogo
+        } 
+        else if(!dados.tipo){
+            jogo = dados
+        } 
+        else{
+            return
         }
 
-        ws.onerror = () => {
-            status.innerText = "❌ Erro na conexão"
-        }
-
-        ws.onclose = () => {
-            status.innerText = "🔴 Conexão encerrada"
-        }
-        
-        ws.onmessage = (event) => {
-
-           const dados = JSON.parse(event.data)
-
-            if(dados.tipo === "usuarios"){
-                document.getElementById("usuarios").innerText =
-                    "👥 Usuários conectados: " + dados.total
-                return
-            }
-
-            if(dados.tipo){
-                return
-            }
-
-            const jogo = dados
-
-            if(!jogo.timeA){
-                placar.innerText = "Nenhum jogo em andamento"
-                tempo.innerText = ""
-                lista.innerHTML = ""
-                return
-            }
-
-            placar.innerText =
-                `${jogo.timeA} ${jogo.golsA} x ${jogo.golsB} ${jogo.timeB}`
-
-            tempo.innerText = `⏱ ${jogo.minuto}'`
-
+        // nenhum jogo ativo
+        if(!jogo || !jogo.timeA){
+            placar.innerText = "Nenhum jogo em andamento"
+            tempo.innerText = ""
             lista.innerHTML = ""
-
-            jogo.eventos.slice().reverse().forEach(function(e){
-
-                const li = document.createElement("li")
-                li.innerText = e
-                lista.appendChild(li)
-
-            })
-
+            return
         }
+
+        // atualizar placar
+        placar.innerText =
+            `${jogo.timeA} ${jogo.golsA} x ${jogo.golsB} ${jogo.timeB}`
+
+        // atualizar tempo
+        tempo.innerText = `⏱ ${jogo.minuto}'`
+
+        // atualizar eventos
+        lista.innerHTML = ""
+
+        const eventos = jogo.eventos || []
+
+        eventos.slice().reverse().forEach(function(e){
+
+            const li = document.createElement("li")
+            li.innerText = e
+            lista.appendChild(li)
+
+        })
 
     }
 
-    function desconectar(){
-        if(ws){
-            ws.close()
-        }
+}
+
+function desconectar(){
+    if(ws){
+        ws.close()
     }
+}
+
+// conecta automaticamente ao abrir a página
+conectar()
 
 </script>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Classificação</title>
+<link rel="stylesheet" href="assets/css/classificacao.css">
+</head>
+
+<body>
+
+<header>
+<h1>🏆 Classificação do Campeonato</h1>
+</header>
+
+<nav>
+<ul>
+<li><a href="index.html">Início</a></li>
+<li><a href="jogo.html">Placar</a></li>
+<li><a href="historico.html">Histórico</a></li>
+<li><a href="admin.html">Admin</a></li>
+<li><a href="classificacao.html">Classificação</a></li>
+</ul>
+</nav>
+
+<div class="container">
+
+<section>
+
+<p id="status">🔴 Desconectado</p>
+
+<button id="btnConectar" onclick="conectar()">Conectar</button>
+<button id="btnDesconectar" onclick="desconectar()">Desconectar</button>
+
+</section>
+
+<section>
+
+<table id="tabela">
+
+<thead>
+<tr>
+<th>Pos</th>
+<th>Time</th>
+<th>P</th>
+<th>J</th>
+<th>V</th>
+<th>E</th>
+<th>D</th>
+<th>SG</th>
+</tr>
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+</section>
+
+</div>
+
+<footer>
+Sistema de Acompanhamento de Jogos ⚽
+</footer>
+
+<script>
+
+let ws = null
+
+function conectar(){
+
+    if(ws && ws.readyState === WebSocket.OPEN){
+        return
+    }
+
+    ws = new WebSocket("ws://localhost:3000")
+
+    document.getElementById("status").innerText = "🟡 Conectando..."
+
+    ws.onopen = ()=>{
+        document.getElementById("status").innerText = "🟢 Conectado"
+    }
+
+    ws.onclose = ()=>{
+        document.getElementById("status").innerText = "🔴 Desconectado"
+    }
+
+    ws.onerror = ()=>{
+        document.getElementById("status").innerText = "❌ Erro na conexão"
+    }
+
+    ws.onmessage = (event)=>{
+
+        const dados = JSON.parse(event.data)
+
+        if(dados.tipo === "classificacao-atualizada"){
+            mostrarTabela(dados.tabela || [])
+        }
+
+    }
+
+}
+
+function desconectar(){
+    if(ws){
+        ws.close()
+    }
+}
+
+function mostrarTabela(times){
+
+    const tbody = document.querySelector("#tabela tbody")
+    tbody.innerHTML=""
+
+    if(!times || times.length === 0){
+        tbody.innerHTML = "<tr><td colspan='8'>Nenhum dado disponível</td></tr>"
+        return
+    }
+
+    times.forEach((t,i)=>{
+
+        const gp = t.gp || 0
+        const gc = t.gc || 0
+        const sg = gp - gc
+
+        const tr = document.createElement("tr")
+
+        tr.innerHTML = `
+        <td class="pos">${i+1}</td>
+        <td>${t.time}</td>
+        <td>${t.p}</td>
+        <td>${t.j}</td>
+        <td>${t.v}</td>
+        <td>${t.e}</td>
+        <td>${t.d}</td>
+        <td>${sg}</td>
+        `
+
+        tbody.appendChild(tr)
+
+    })
+
+}
+
+// conecta automaticamente ao abrir a página
+conectar()
+
+</script>
+
+</body>
+</html>

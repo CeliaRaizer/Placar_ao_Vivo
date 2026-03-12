@@ -1,43 +1,92 @@
-const fs = require("fs");
-const caminho = "./data/jogos.json";
+const fs = require("fs")
+const path = require("path")
+
+const pasta = path.join(__dirname, "../../data")
+const caminho = path.join(pasta, "jogos.json")
 
 class Historico {
 
-    salvarJogo(jogo){
-        let dados = [];
 
-        if(fs.existsSync(caminho)){
-            const conteudo = fs.readFileSync(caminho, "utf8");
+garantirArquivo(){
 
-            if(conteudo){
-                dados = JSON.parse(conteudo);
-            }
-        }
-        dados.push(jogo);
-        fs.writeFileSync(caminho, JSON.stringify(dados, null, 2));
+    if(!fs.existsSync(pasta)){
+        fs.mkdirSync(pasta)
     }
 
-    removerJogo(index){
-        const dados = JSON.parse(fs.readFileSync(caminho, "utf8"));
-        dados.splice(index,1);
-        fs.writeFileSync(caminho, JSON.stringify(dados, null, 2));
-    }
-
-    listarJogos(){
-
-        if(!fs.existsSync(caminho)){
-            return [];
-        }
-
-        const conteudo = fs.readFileSync(caminho, "utf8");
-        
-        if(!conteudo){
-            return [];
-        }
-
-        return JSON.parse(conteudo);
+    if(!fs.existsSync(caminho)){
+        fs.writeFileSync(caminho, "[]")
     }
 
 }
 
-module.exports = Historico;
+lerDados(){
+
+    try{
+
+        this.garantirArquivo()
+
+        const conteudo = fs.readFileSync(caminho, "utf8")
+
+        if(!conteudo){
+            return []
+        }
+
+        return JSON.parse(conteudo)
+
+    }catch(e){
+
+        console.error("Erro ao ler histórico:", e)
+
+        return []
+
+    }
+
+}
+
+salvarDados(dados){
+
+    try{
+
+        fs.writeFileSync(
+            caminho,
+            JSON.stringify(dados, null, 2)
+        )
+
+    }catch(e){
+
+        console.error("Erro ao salvar histórico:", e)
+
+    }
+
+}
+
+salvarJogo(jogo){
+
+    const dados = this.lerDados()
+
+    dados.push(jogo)
+
+    this.salvarDados(dados)
+
+}
+
+removerJogo(index){
+
+    const dados = this.lerDados()
+
+    dados.splice(index,1)
+
+    this.salvarDados(dados)
+
+}
+
+listarJogos(){
+
+    return this.lerDados()
+
+}
+
+
+}
+
+module.exports = Historico

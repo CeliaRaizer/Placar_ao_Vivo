@@ -6,8 +6,10 @@ const WebSocket = require("ws");
 const Jogo = require("./app/models/Jogo");
 const Notificador = require("./app/utils/Notificador");
 const Historico = require("./app/utils/Historico");
+const calcularClassificacao = require("./app/utils/classificacao"); // ← ADICIONE ESTA LINHA
 const JogoController = require("./app/controllers/JogoController");
 const configurarRotas = require("./app/routes/routes");
+
 
 const app = express();
 const server = http.createServer(app);
@@ -35,16 +37,34 @@ wss.on("connection", ws => {
     // enviar estado atual do jogo
     ws.send(JSON.stringify(jogo.obterDados()))
 
+    const jogos = historico.listarJogos()
+
     // enviar histórico
     ws.send(JSON.stringify({
         tipo: "historico-atualizado",
-        historico: historico.listarJogos()
+        historico: jogos
+    }))
+
+    // enviar classificação
+    ws.send(JSON.stringify({
+        tipo: "classificacao-atualizada",
+        tabela: calcularClassificacao(jogos)
     }))
 
     ws.on("close", () => {
         console.log("Cliente desconectado")
         enviarUsuarios()
     })
+
+    wss.on("connection", ws => {
+
+    console.log("Cliente conectado")
+
+    ws.on("close", () => {
+        console.log("Cliente desconectado")
+    })
+
+})
 
 })
 

@@ -13,6 +13,7 @@
         <li><a href="jogo.html">Placar</a></li>
         <li><a href="historico.html">Histórico</a></li>
         <li><a href="admin.html">Admin</a></li>
+        <li><a href="classificacao.html">Classificação</a></li>
     </ul>
 </nav>
 
@@ -78,100 +79,148 @@
 
 <script>
 
-    function criarJogo(){
-        const timeA = document.getElementById("timeA").value
-        const timeB = document.getElementById("timeB").value
+function criarJogo(){
 
-        fetch("/definir-times",{
-            method:"POST",
-            headers:{
-            "Content-Type":"application/json"
-            },
-            body: JSON.stringify({timeA,timeB})
-        })
+    const timeA = document.getElementById("timeA").value.trim()
+    const timeB = document.getElementById("timeB").value.trim()
+
+    if(!timeA || !timeB){
+        alert("Informe os dois times!")
+        return
     }
 
-    function golA(){
-        const jogador = document.getElementById("jogador").value
-        const minuto = document.getElementById("minuto").value
-
-        fetch("/golA",{
+    fetch("/definir-times",{
         method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body: JSON.stringify({jogador,minuto})
-        })
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({timeA,timeB})
+    })
+    .then(()=>{
 
-        document.getElementById("jogador").value = ""
-        document.getElementById("minuto").value = ""
-    }
-
-
-    function golB(){
-        const jogador = document.getElementById("jogador").value
-        const minuto = document.getElementById("minuto").value
-
-        fetch("/golB",{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body: JSON.stringify({jogador,minuto})
-        })
-
-        document.getElementById("jogador").value = ""
-        document.getElementById("minuto").value = ""
-    }
-
-
-    function cartaoA(){
-
-        const jogador = document.getElementById("jogadorCartao").value
-        const minuto = document.getElementById("minutoCartao").value
-        const tipo = document.getElementById("tipoCartao").value
-
-        fetch("/cartao",{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body: JSON.stringify({jogador,minuto,tipo,time:"A"})
-        })
-
-        document.getElementById("jogadorCartao").value = ""
-        document.getElementById("minutoCartao").value = ""
-    }
-
-
-    function cartaoB(){
-
-        const jogador = document.getElementById("jogadorCartao").value
-        const minuto = document.getElementById("minutoCartao").value
-        const tipo = document.getElementById("tipoCartao").value
-
-        fetch("/cartao",{
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body: JSON.stringify({jogador,minuto,tipo,time:"B"})
-        })
-
-        document.getElementById("jogadorCartao").value = ""
-        document.getElementById("minutoCartao").value = ""
-    }
-
-
-    function removerJogo(){
-        fetch("/remover-jogo",{
-            method:"POST"
-        })
-
-        .then(() => {alert("Jogo finalizado!");})
+        alert("Jogo criado!")
 
         document.getElementById("timeA").value = ""
         document.getElementById("timeB").value = ""
+
+    })
+    .catch(()=>alert("Erro ao criar jogo"))
+
+}
+
+function golA(){
+
+    const jogador = document.getElementById("jogador").value.trim()
+    const minuto = document.getElementById("minuto").value.trim()
+
+    if(!jogador || !minuto){
+        alert("Informe jogador e minuto")
+        return
     }
+
+    fetch("/golA",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({jogador,minuto})
+    })
+
+    document.getElementById("jogador").value = ""
+    document.getElementById("minuto").value = ""
+
+}
+
+function golB(){
+
+    const jogador = document.getElementById("jogador").value.trim()
+    const minuto = document.getElementById("minuto").value.trim()
+
+    if(!jogador || !minuto){
+        alert("Informe jogador e minuto")
+        return
+    }
+
+    fetch("/golB",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({jogador,minuto})
+    })
+
+    document.getElementById("jogador").value = ""
+    document.getElementById("minuto").value = ""
+
+}
+
+function cartaoA(){
+
+    const jogador = document.getElementById("jogadorCartao").value.trim()
+    const minuto = document.getElementById("minutoCartao").value.trim()
+    const tipo = document.getElementById("tipoCartao").value
+
+    if(!jogador || !minuto){
+        alert("Informe jogador e minuto")
+        return
+    }
+
+    fetch("/cartao",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({jogador,minuto,tipo,time:"A"})
+    })
+
+    document.getElementById("jogadorCartao").value = ""
+    document.getElementById("minutoCartao").value = ""
+
+}
+
+function cartaoB(){
+
+    const jogador = document.getElementById("jogadorCartao").value.trim()
+    const minuto = document.getElementById("minutoCartao").value.trim()
+    const tipo = document.getElementById("tipoCartao").value
+
+    if(!jogador || !minuto){
+        alert("Informe jogador e minuto")
+        return
+    }
+
+    fetch("/cartao",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({jogador,minuto,tipo,time:"B"})
+    })
+
+    document.getElementById("jogadorCartao").value = ""
+    document.getElementById("minutoCartao").value = ""
+
+}
+
+function removerJogo(){
+
+    if(!confirm("Deseja finalizar o jogo?")){
+        return
+    }
+
+    fetch("/remover-jogo",{
+        method:"POST"
+    })
+    .then(()=>{
+
+        alert("Jogo finalizado!")
+
+        document.getElementById("timeA").value = ""
+        document.getElementById("timeB").value = ""
+
+    })
+    .catch(()=>alert("Erro ao finalizar jogo"))
+
+}
 
 </script>
