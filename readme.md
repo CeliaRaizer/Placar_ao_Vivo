@@ -71,7 +71,9 @@ PLACAR_AO_VIVO/
 ├── package-lock.json        # Trava de versões das dependências
 ├── package.json             # Metadados e scripts do Node.js
 ├── readme.md                # Documentação do projeto
-└── server.js                # Arquivo principal (Ponto de entrada) ```
+└── server.js                # Arquivo principal (Ponto de entrada) 
+
+```
 
 
 ---
