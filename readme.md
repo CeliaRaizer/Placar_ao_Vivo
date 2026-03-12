@@ -41,7 +41,7 @@ O sistema utiliza **WebSocket** para enviar atualizações instantâneas para to
 PLACAR_AO_VIVO/
 ├── app/
 │   ├── controllers/    
-    │  └── JogoController.js    # Lógica de controle das requisições
+│   │  └── JogoController.js    # Lógica de controle das requisições
 │   ├── models/
 │   │   └── Jogo.js          # Modelo de dados do Jogo
 │   ├── routes/
@@ -71,10 +71,11 @@ PLACAR_AO_VIVO/
 ├── package-lock.json        # Trava de versões das dependências
 ├── package.json             # Metadados e scripts do Node.js
 ├── readme.md                # Documentação do projeto
-└── server.js                # Arquivo principal (Ponto de entrada)
+└── server.js                # Arquivo principal (Ponto de entrada) ```
 
 
 ---
+
 
 ## Como Executar o Projeto
 
