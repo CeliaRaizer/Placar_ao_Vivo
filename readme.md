@@ -94,13 +94,14 @@ No terminal, dentro da pasta do projeto:
 ```bash
 npm install
 
+```
 ### 3. Iniciar o servidor
 
 Execute:
 
 ```bash
 npm start
-
+```
 ### 4. Abrir o navegador
 
 Acesse:
